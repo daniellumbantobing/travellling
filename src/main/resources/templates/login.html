@@ -1,80 +1,50 @@
+
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>User Management</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Login</title>
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<script	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<!------ Include the above in your HEAD tag ---------->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+	</head>
+	
+	<body>
+		<div class="card bg-light">
+			<article class="card-body mx-auto" style="max-width: 400px;">
+				<h4 class="card-title mt-3 text-center">Login</h4>
 
-	<!-- navigation bar (header) -->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#" th:href="@{/}">User Management</a>
-			</div>
-		</div>
-	</nav>
-
-<br>
-<br>
-	<!-- form login -->
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-				<h1>Login</h1>
-				<form th:action="@{/login}" method="post">
-				
-					<!-- Error message -->
-					<div th:if="${param.error}">
-						<div class="alert alert-danger">
-							Username dan password invalid!!!
+				<form action="#" th:action="login" th:object="${user}" method="post">
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> 
+								<i class="fa fa-user"></i>
+							</span>
 						</div>
+						<input name="" class="form-control" placeholder="Username" type="text" th:field="*{username}">
 					</div>
-					<!-- End error message -->
 					
-					<!-- Logout message -->
-					<div th:if="${param.logout}">
-						<div class="alert alert-info">
-							Berhasil logout!!!
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> 
+								<i class="fa fa-lock"></i>
+							</span>
 						</div>
-					</div>
-					<!-- End logout message -->
-					
-					<div class="form-group">
-						<label for="username">Username :</label>
-						<input type="text" class="form-control" id="username" name="username" placeholder="Masukkan email anda ..." autofocus="autofocus">
+						
+						<input class="form-control" placeholder="Create password" type="password" th:field="*{pwd}">
 					</div>
 					
 					<div class="form-group">
-						<label for="username">Password :</label>
-						<input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password anda ..." autofocus="autofocus">
+						<button type="submit" class="btn btn-primary btn-block">Login</button>
 					</div>
 					
-					<div class="form-group">
-						<div class="row">
-							<div class="col-sm-6 col-sm-offset-3">
-								<input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-primary" value="Login">
-							</div>
-						</div>
-					</div>
-					
+					<p class="text-center">
+						Don't have an account? <a th:href="@{/registration}">Register </a>
+					</p>
 				</form>
-				<div class="form-group">
-					<span>User baru ? <a href="/" th:href="@{/registration}">Daftarkan sekarang...</a></span>
-				</div>
-			</div>
+			</article>
 		</div>
-	</div>
-	<!-- End form login -->
-
-
-</body>
+	</body>
 </html>

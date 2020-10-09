@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin</title>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- <b><span th:text="${user.username}"></span></b> -->
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Hapy Travelling</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" th:href="@{/logout}">Logout</a></li>
+           
+          </ul>
+         
+        </div>
+      </div>
+    </nav>
+<br>
+  <div class="container">
+      <div class="page-header">
+        <h1>Welcome Admin</h1>
+       
+      </div>
+    	<div class="row">
+    	<a  th:href="@{/add}"  class="btn btn-primary">Tambah Data Penerbangan</a>
+    	 <br><br>
+    <table class="table">
+		<thead>
+			<tr>
+				<th scope="col">From</th>
+		        <th scope="col">To</th>
+		        <th scope="col">No. of Pessangers</th>
+		        <th scope="col">Departure Date</th>
+		        <th scope="col">Return Date</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="penerbangan : ${penerbangans} ">
+			      <td th:text="${penerbangan.dari}"></td>
+			      <td th:text="${penerbangan.ke}"></td>
+			      <td th:text="${penerbangan.nomor}"></td>
+			      <td th:text="${penerbangan.pergi}"></td>
+			      <td th:text="${penerbangan.kembali}"></td>
+			      <td> 
+			      	
+			      	<a th:href="@{/delete/{id}(id=${penerbangan.id})}" class="btn btn-danger">Delete</a> 
+			      </td>
+		    </tr>
+		  </tbody>
+		</table>
+    	</div>
+    </div>
+  </body>
+</html>

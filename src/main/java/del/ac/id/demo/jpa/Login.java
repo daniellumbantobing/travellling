@@ -2,12 +2,15 @@ package del.ac.id.demo.jpa;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table(name = "t_login")
 public class Login {
 	@Id
+	
 	@Column(name="username")
 	private String username;
 	@Column(name="roleid")
